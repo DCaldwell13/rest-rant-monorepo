@@ -6,12 +6,18 @@ export const CurrentUser = createContext()
 function CurrentUserProvider({ children }){
 
     const [currentUser, setCurrentUser] = useState(null)
-
+    window.setCurrentUser = setCurrentUser
     return (
         <CurrentUser.Provider value={{ currentUser, setCurrentUser }}>
             {children}
         </CurrentUser.Provider>
     )
+    
+    setCurrentUser({
+        firstName: 'Your first name',
+        lastName: 'Your last name'
+    })
+    
 }
 
 export default CurrentUserProvider
