@@ -20,6 +20,13 @@ User.init({
   firstName: DataTypes.STRING,
   lastName: DataTypes.STRING,
   email: DataTypes.STRING,
+  role:{
+    type :DataTypes.ENUM,
+    values:[
+      "reviewer",
+      "admin"
+    ]
+  },
   passwordDigest: DataTypes.STRING
 }, {
     sequelize,

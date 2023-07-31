@@ -27,21 +27,7 @@ router.post('/', async (res, req) => {
 
 router.get('/profile', async (req, res) => {
     try {
-        const [authMethod, token] = req.headers.authorization.split(' ');
-        
-        if(authMethod === 'Bearer') {
-            const { value: {userId} } = await jwt.decode(process.env.JWT_SECRETS, token)
-            let user = await User.findOne({
-                where: {
-                    userID
-                }
-            })
-            if (user) {
-                res.status(200).json(user)
-            } else {
-                res.status(404).json({ message: 'user could not be found'})
-            }
-          }
+        res.status(200).json(req.currentUser)
         } catch (error){
             res.status(500).json({ message: 'Server did an oppsie'})
         }
