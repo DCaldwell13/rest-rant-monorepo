@@ -8,9 +8,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate({ Comment }) {
       User.hasMany(Comment, { as: 'author', foreignKey: 'author_id' })
     }
-
   };
-    
+
 User.init({
   userId: {
     type: DataTypes.SMALLINT,
